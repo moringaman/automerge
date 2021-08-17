@@ -5,7 +5,7 @@ on:
   schedule:
     - cron: 10 * * * *
 jobs:
-  auto-merge:
+  automerge:
     runs-on: ubuntu-latest
     steps:
       - name: Auto-Merge Pull Requests
