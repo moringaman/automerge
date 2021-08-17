@@ -1,22 +1,28 @@
-name: automerge 
+name: automerge
 on:
-  # Add a cron to determine what time you want to auto-merge your pull request(s). Crons are written in UTC:
-  # https://help.github.com/en/actions/reference/events-that-trigger-workflows#scheduled-events-schedule.
   schedule:
-    - cron: 10 * * * *
+    -cron: 10 * * * *
+  pull_request_review:
+    types:
+      - submitted
+  check_suite:
+    types:
+      - completed
+  status: {}
 jobs:
   automerge:
     runs-on: ubuntu-latest
     steps:
-      - name: Auto-Merge Pull Requests
-        uses: "pascalgn/automerge-action@v0.14.2" 
+      - name: automerge
+        uses: "pascalgn/automerge-action@v0.14.2"
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          MERGE_LABELS: automerge
-          MERGE_METHOD: merge
-          MERGE_COMMIT_MESSAGE: 'this was a scheduled merge'
-          MERGE_FORKS: false
-          MERGE_RETRIES: 6
-          MERGE_RETRY_SLEEP: 10000
-          UPDATE_LABELS: auto-merge
-          UPDATE_METHOD: merge
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+          MERGE_LABELS: "automerge,!work in progress"
+          MERGE_REMOVE_LABELS: "automerge"
+          MERGE_METHOD: "squash"
+          MERGE_COMMIT_MESSAGE: "pull-request-description"
+          MERGE_FORKS: "false"
+          MERGE_RETRIES: "6"
+          MERGE_RETRY_SLEEP: "10000"
+          UPDATE_LABELS: ""
+          UPDATE_METHOD: "rebase"
