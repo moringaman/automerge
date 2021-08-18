@@ -8,7 +8,7 @@ on:
       - reopened
   schedule:
     # https://crontab.guru/every-hour
-    - cron: 55 0 * * *
+    - cron: 05 1 * * *
 
 jobs:
   merge_schedule:
@@ -20,7 +20,7 @@ jobs:
           # rebase. Default is merge.
           merge_method: merge
           #  Time zone to use. Default is UTC.
-          time_zone: "America/Phoenix"
+          time_zone: "Europe/London"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
