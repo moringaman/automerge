@@ -1,0 +1,15 @@
+2021-08-21 20:54:17,588 ERROR An error occurred (ExpiredTokenException) when calling the Query operation: The security token included in the request is expired
+Traceback (most recent call last):
+  File "/usr/local/Cellar/credstash/1.17.1_3/libexec/bin/credstash.py", line 274, in clean_error
+    return func(*args, **kwargs)
+  File "/usr/local/Cellar/credstash/1.17.1_3/libexec/bin/credstash.py", line 572, in getSecret
+    response = secrets.query(Limit=1,
+  File "/usr/local/Cellar/credstash/1.17.1_3/libexec/lib/python3.9/site-packages/boto3/resources/factory.py", line 520, in do_action
+    response = action(self, *args, **kwargs)
+  File "/usr/local/Cellar/credstash/1.17.1_3/libexec/lib/python3.9/site-packages/boto3/resources/action.py", line 83, in __call__
+    response = getattr(parent.meta.client, operation_name)(*args, **params)
+  File "/usr/local/Cellar/credstash/1.17.1_3/libexec/lib/python3.9/site-packages/botocore/client.py", line 357, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+  File "/usr/local/Cellar/credstash/1.17.1_3/libexec/lib/python3.9/site-packages/botocore/client.py", line 676, in _make_api_call
+    raise error_class(parsed_response, operation_name)
+botocore.exceptions.ClientError: An error occurred (ExpiredTokenException) when calling the Query operation: The security token included in the request is expired
